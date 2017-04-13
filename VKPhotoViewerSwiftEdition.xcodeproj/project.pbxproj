@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		A623A2C8E5FCFF3757EA8B20 /* Pods_VKPhotoViewerSwiftEdition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28C869CBA1E6F11C764A330 /* Pods_VKPhotoViewerSwiftEdition.framework */; };
 		CD1F8D3F1E9E7843007DEABE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F8D3E1E9E7843007DEABE /* ViewController.swift */; };
+		CD2175681E9FB10E004A0AAB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2175671E9FB10E004A0AAB /* Functions.swift */; };
 		CDCA8B931E9F7ABD00D41672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCA8B871E9F7ABD00D41672 /* AppDelegate.swift */; };
 		CDCA8B941E9F7ABD00D41672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCA8B891E9F7ABD00D41672 /* Assets.xcassets */; };
 		CDCA8B951E9F7ABD00D41672 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCA8B8A1E9F7ABD00D41672 /* LaunchScreen.storyboard */; };
 		CDCA8B961E9F7ABD00D41672 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCA8B8C1E9F7ABD00D41672 /* Main.storyboard */; };
-		CDCA8B971E9F7ABD00D41672 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDCA8B921E9F7ABD00D41672 /* Info.plist */; };
 		CDCA8B9A1E9F7B3000D41672 /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCA8B991E9F7B3000D41672 /* VKLoginViewController.swift */; };
 		CDCA8B9C1E9F7B4900D41672 /* VKAlbumsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCA8B9B1E9F7B4900D41672 /* VKAlbumsListViewController.swift */; };
 		CDCA8B9E1E9F7B5A00D41672 /* VKAlbumPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCA8B9D1E9F7B5A00D41672 /* VKAlbumPhotosViewController.swift */; };
@@ -26,6 +26,7 @@
 		B28C869CBA1E6F11C764A330 /* Pods_VKPhotoViewerSwiftEdition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKPhotoViewerSwiftEdition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1F8D391E9E7843007DEABE /* VKPhotoViewerSwiftEdition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKPhotoViewerSwiftEdition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1F8D3E1E9E7843007DEABE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD2175671E9FB10E004A0AAB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		CDCA8B871E9F7ABD00D41672 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDCA8B891E9F7ABD00D41672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDCA8B8B1E9F7ABD00D41672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -97,6 +98,14 @@
 			path = VKPhotoViewerSwiftEdition;
 			sourceTree = "<group>";
 		};
+		CD2175661E9FB0E1004A0AAB /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				CD2175671E9FB10E004A0AAB /* Functions.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		CDCA8B861E9F7ABD00D41672 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +136,7 @@
 		CDCA8B8F1E9F7ABD00D41672 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				CD2175661E9FB0E1004A0AAB /* Functions */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -225,7 +235,6 @@
 				CDCA8B941E9F7ABD00D41672 /* Assets.xcassets in Resources */,
 				CDCA8B961E9F7ABD00D41672 /* Main.storyboard in Resources */,
 				CDCA8B951E9F7ABD00D41672 /* LaunchScreen.storyboard in Resources */,
-				CDCA8B971E9F7ABD00D41672 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +296,7 @@
 				CDCA8B931E9F7ABD00D41672 /* AppDelegate.swift in Sources */,
 				CDCA8BA01E9F7B6B00D41672 /* VKPhotoDetailViewController.swift in Sources */,
 				CDCA8B9A1E9F7B3000D41672 /* VKLoginViewController.swift in Sources */,
+				CD2175681E9FB10E004A0AAB /* Functions.swift in Sources */,
 				CDCA8B9C1E9F7B4900D41672 /* VKAlbumsListViewController.swift in Sources */,
 				CD1F8D3F1E9E7843007DEABE /* ViewController.swift in Sources */,
 				CDCA8B9E1E9F7B5A00D41672 /* VKAlbumPhotosViewController.swift in Sources */,
