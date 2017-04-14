@@ -10,6 +10,8 @@
 		A623A2C8E5FCFF3757EA8B20 /* Pods_VKPhotoViewerSwiftEdition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28C869CBA1E6F11C764A330 /* Pods_VKPhotoViewerSwiftEdition.framework */; };
 		CD1F8D3F1E9E7843007DEABE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F8D3E1E9E7843007DEABE /* ViewController.swift */; };
 		CD2175681E9FB10E004A0AAB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2175671E9FB10E004A0AAB /* Functions.swift */; };
+		CD51ADF81EA0F1D9008B88BD /* VKAlbumListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD51ADF61EA0F1D8008B88BD /* VKAlbumListTableViewCell.swift */; };
+		CD51ADFD1EA0F981008B88BD /* VKAlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD51ADFC1EA0F981008B88BD /* VKAlbumModel.swift */; };
 		CDCA8B931E9F7ABD00D41672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCA8B871E9F7ABD00D41672 /* AppDelegate.swift */; };
 		CDCA8B941E9F7ABD00D41672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCA8B891E9F7ABD00D41672 /* Assets.xcassets */; };
 		CDCA8B951E9F7ABD00D41672 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCA8B8A1E9F7ABD00D41672 /* LaunchScreen.storyboard */; };
@@ -27,6 +29,8 @@
 		CD1F8D391E9E7843007DEABE /* VKPhotoViewerSwiftEdition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKPhotoViewerSwiftEdition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1F8D3E1E9E7843007DEABE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CD2175671E9FB10E004A0AAB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		CD51ADF61EA0F1D8008B88BD /* VKAlbumListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAlbumListTableViewCell.swift; sourceTree = "<group>"; };
+		CD51ADFC1EA0F981008B88BD /* VKAlbumModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAlbumModel.swift; sourceTree = "<group>"; };
 		CDCA8B871E9F7ABD00D41672 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDCA8B891E9F7ABD00D41672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDCA8B8B1E9F7ABD00D41672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,6 +110,38 @@
 			path = Functions;
 			sourceTree = "<group>";
 		};
+		CD51ADF41EA0F1B9008B88BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD51ADF51EA0F1B9008B88BD /* VKAlbumListTableViewCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CD51ADF51EA0F1B9008B88BD /* VKAlbumListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CD51ADF61EA0F1D8008B88BD /* VKAlbumListTableViewCell.swift */,
+			);
+			path = VKAlbumListTableViewCell;
+			sourceTree = "<group>";
+		};
+		CD51ADFA1EA0F959008B88BD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CD51ADFB1EA0F971008B88BD /* VKAlbumModel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CD51ADFB1EA0F971008B88BD /* VKAlbumModel */ = {
+			isa = PBXGroup;
+			children = (
+				CD51ADFC1EA0F981008B88BD /* VKAlbumModel.swift */,
+			);
+			path = VKAlbumModel;
+			sourceTree = "<group>";
+		};
 		CDCA8B861E9F7ABD00D41672 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				CDCA8B8F1E9F7ABD00D41672 /* Library */,
+				CD51ADFA1EA0F959008B88BD /* Models */,
 				CDCA8B901E9F7ABD00D41672 /* UI */,
 			);
 			path = Source;
@@ -144,6 +181,7 @@
 		CDCA8B901E9F7ABD00D41672 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CD51ADF41EA0F1B9008B88BD /* Views */,
 				CDCA8B981E9F7B1B00D41672 /* Controllers */,
 			);
 			path = UI;
@@ -295,6 +333,8 @@
 			files = (
 				CDCA8B931E9F7ABD00D41672 /* AppDelegate.swift in Sources */,
 				CDCA8BA01E9F7B6B00D41672 /* VKPhotoDetailViewController.swift in Sources */,
+				CD51ADFD1EA0F981008B88BD /* VKAlbumModel.swift in Sources */,
+				CD51ADF81EA0F1D9008B88BD /* VKAlbumListTableViewCell.swift in Sources */,
 				CDCA8B9A1E9F7B3000D41672 /* VKLoginViewController.swift in Sources */,
 				CD2175681E9FB10E004A0AAB /* Functions.swift in Sources */,
 				CDCA8B9C1E9F7B4900D41672 /* VKAlbumsListViewController.swift in Sources */,

@@ -17,6 +17,12 @@ class VKLoginViewController: UIViewController, VKSdkUIDelegate,VKSdkDelegate {
         VKSdk.initialize(withAppId: "5980007").register(self)
 
         VKSdk.instance().uiDelegate = self
+        
+        VKSdk.wakeUpSession([VK_PER_PHOTOS]) { (VKAuthorizationState, error) in
+            if VKAuthorizationState == .authorized {
+                self.presentAlbumsVC(animated: false)
+            }
+        }
 
     }
  
@@ -46,16 +52,21 @@ class VKLoginViewController: UIViewController, VKSdkUIDelegate,VKSdkDelegate {
             return
         }
         
+        self.presentAlbumsVC(animated: true)
+    }
+    
+    func vkSdkUserAuthorizationFailed() {
+        presentAlertController(delegate:self, message: "Authorization failed")
+    }
+    
+    
+    func presentAlbumsVC(animated:Bool) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let identifier = "VKAlbumsListViewController"
         
         let albumsVC = storyboard.instantiateViewController(withIdentifier: identifier)
         
-        self.navigationController?.pushViewController(albumsVC, animated: true)
-    }
-    
-    func vkSdkUserAuthorizationFailed() {
-        presentAlertController(delegate:self, message: "Authorization failed")
+        self.navigationController?.pushViewController(albumsVC, animated: animated)
     }
     
 }
