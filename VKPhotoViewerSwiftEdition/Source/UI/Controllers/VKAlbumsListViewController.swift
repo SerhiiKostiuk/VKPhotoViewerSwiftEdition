@@ -8,28 +8,46 @@
 
 import UIKit
 
-class VKAlbumsListViewController: UIViewController {
+class VKAlbumsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var userAlbums = [AlbumModel]()
+    
+    @IBOutlet weak var albumsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(self.logout))
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        getAlbums { (albums) in
+        self.userAlbums = albums
+        self.albumsTableView.reloadData()
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func logout() {
+        VKSdk.forceLogout()
+        self.navigationController?.popViewController(animated: true)
     }
-    */
+    
+    
+    // MARK: - UITableViewDataSource
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return self.userAlbums.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "VKAlbumListTableViewCell", for: indexPath) as! VKAlbumListTableViewCell
 
+        cell.fillCellWith(thumbUrl: userAlbums[indexPath.item].thumbUrl, title: userAlbums[indexPath.item].title)
+        return cell
+    }
+   
+    
 }
