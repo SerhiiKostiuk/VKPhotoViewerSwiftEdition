@@ -8,6 +8,7 @@
 
 import Foundation
 
+//MARK: - display Alert VC
 func presentAlertController(delegate: UIViewController, message: String) {
     let alert = UIAlertController (title: nil, message: message, preferredStyle: .alert)
     
@@ -29,6 +30,33 @@ func presentAlertController(delegate: UIViewController, message: String) {
     }
 }
 
-//func displayAlert() {
-//    
-//}
+//MARK: - loadImages
+
+func imageDownload(imageView: UIImageView, imageUrl: String, activityIndicatorStyle: UIActivityIndicatorViewStyle) {
+    imageView.sd_setShowActivityIndicatorView(true)
+    imageView.sd_setIndicatorStyle(activityIndicatorStyle)
+    imageView.sd_setImage(with: URL(string: imageUrl))
+}
+
+
+func getAlbums(comletionHandler:@escaping (Array<AlbumModel>) ->Void) {
+    let request = VKRequest(method: "photos.getAlbums", parameters: [VK_API_OWNER_ID:VKSdk.accessToken().userId, "need_covers": 1], modelClass: VKPhoto.self)
+    request?.execute(resultBlock: { (response) in
+        let jsonResult = response?.json as! NSDictionary
+        let results = jsonResult["items"] as! NSArray
+        var albums = Array<AlbumModel>()
+        for result in results {
+            let page = result as! NSDictionary
+
+            let album = AlbumModel()
+            album.thumbUrl = page.value(forKey:"thumb_src") as! String
+            album.title = page.value(forKey:"title") as! String
+            album.albumId = page.value(forKey:"id") as! Int
+
+            albums.append(album)
+        }
+        comletionHandler(albums as Array<AlbumModel>)
+    }, errorBlock: {(error) in
+        print("Error: \(String(describing: error))")
+    })
+}
