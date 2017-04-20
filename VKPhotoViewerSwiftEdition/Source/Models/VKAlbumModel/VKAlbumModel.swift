@@ -15,8 +15,4 @@ class AlbumModel {
     var albumDescription: String = ""
     var thumbUrl: String = ""
     
-    
-    
-    
-    
 }
