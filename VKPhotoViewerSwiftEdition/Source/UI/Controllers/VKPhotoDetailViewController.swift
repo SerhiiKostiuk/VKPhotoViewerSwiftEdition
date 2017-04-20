@@ -10,9 +10,14 @@ import UIKit
 
 class VKPhotoDetailViewController: UIViewController {
 
+    @IBOutlet weak var photoImageView: UIImageView!
+    var photo = PhotoModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        imageDownload(imageView: photoImageView, imageUrl: photo.fullPhotoUrl, activityIndicatorStyle: .gray)
+        
         // Do any additional setup after loading the view.
     }
 
