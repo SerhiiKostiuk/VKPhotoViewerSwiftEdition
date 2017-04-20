@@ -13,6 +13,7 @@ class VKAlbumsListViewController: UIViewController, UITableViewDataSource, UITab
     var userAlbums = [AlbumModel]()
     
     @IBOutlet weak var albumsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,5 +50,17 @@ class VKAlbumsListViewController: UIViewController, UITableViewDataSource, UITab
         return cell
     }
    
+    // MARK: - UITableViewDelegate
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let identifier = "VKAlbumPhotosViewController"
+        
+        let photosVC = storyboard.instantiateViewController(withIdentifier: identifier) as! VKAlbumPhotosViewController
+        
+        photosVC.album = self.userAlbums[indexPath.item]
+        
+        self.navigationController?.pushViewController(photosVC, animated: true)
+    }
+
 }
