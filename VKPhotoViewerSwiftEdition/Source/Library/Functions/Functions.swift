@@ -39,7 +39,7 @@ func imageDownload(imageView: UIImageView, imageUrl: String, activityIndicatorSt
 }
 
 
-func getAlbums(comletionHandler:@escaping (Array<AlbumModel>) ->Void) {
+func getAlbums(completionHandler:@escaping (Array<AlbumModel>) ->Void) {
     let request = VKRequest(method: "photos.getAlbums", parameters: [VK_API_OWNER_ID:VKSdk.accessToken().userId, "need_covers": 1], modelClass: VKPhoto.self)
     request?.execute(resultBlock: { (response) in
         let jsonResult = response?.json as! NSDictionary
@@ -52,11 +52,45 @@ func getAlbums(comletionHandler:@escaping (Array<AlbumModel>) ->Void) {
             album.thumbUrl = page.value(forKey:"thumb_src") as! String
             album.title = page.value(forKey:"title") as! String
             album.albumId = page.value(forKey:"id") as! Int
-
+            album.ownerId = page.value(forKey: "owner_id") as! Int
             albums.append(album)
         }
-        comletionHandler(albums as Array<AlbumModel>)
+        
+        completionHandler(albums as Array<AlbumModel>)
+        
     }, errorBlock: {(error) in
         print("Error: \(String(describing: error))")
     })
+}
+
+func getPhotos(album:(AlbumModel), completionHandler:@escaping (Array<Any>) ->Void) {
+    let parameters = ["owner_id" : album.ownerId, "album_id" : album.albumId, "photo_sizes" : 1]
+    let request = VKRequest(method: "photos.get", parameters: parameters)
+    
+    request?.execute(resultBlock: { (response) in
+        let jsonResult = response?.json as! NSDictionary
+        let results = jsonResult["items"] as! NSArray
+        var photos = Array<PhotoModel>()
+        for result in results {
+            let item = result as! NSDictionary
+            let photo = PhotoModel()
+            photo.photoId = item.value(forKey: "id") as! Int
+            photo.photoSizesArray = item.value(forKey: "sizes") as! Array
+            let thumbPhotoDictionary = photo.photoSizesArray.first as! NSDictionary
+            photo.thumbPhotoUrl = thumbPhotoDictionary.value(forKey: "src") as! String
+            let fullPhotoDictionary = photo.photoSizesArray.last as! NSDictionary
+            
+            photo.fullPhotoUrl = fullPhotoDictionary.value(forKey: "src") as! String
+            
+            photos.append(photo)
+
+        }
+        
+        completionHandler(photos as Array<Any>)
+        
+    }, errorBlock: {(error) in
+        print("Error: \(String(describing: error))")
+    })
+
+    
 }
