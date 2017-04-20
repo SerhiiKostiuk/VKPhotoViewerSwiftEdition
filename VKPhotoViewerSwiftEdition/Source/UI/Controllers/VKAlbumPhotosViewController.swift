@@ -8,28 +8,52 @@
 
 import UIKit
 
-class VKAlbumPhotosViewController: UIViewController {
+class VKAlbumPhotosViewController: UICollectionViewController {
+
+    @IBOutlet var photosCollectionView: UICollectionView!
+    
+    var album = AlbumModel()
+    var photos = [PhotoModel]()
+    
+    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getPhotos(album: album) { (photos) in
+            print("")
+            self.photos = photos as! [PhotoModel]
+            self.photosCollectionView.reloadData()
+        }
         // Do any additional setup after loading the view.
     }
+    
+    // MARK: - UICollectionViewDataSource
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VKAlbumPhotoCollectionViewCell", for: indexPath) as! VKAlbumPhotoCollectionViewCell
+        
+        cell.fillCellWith(thumbUrl: photos[indexPath.item].fullPhotoUrl)
+        
+        return cell
     }
-    */
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let identifier = "VKPhotoDetailViewController"
+        
+        let photoDetailVC = storyboard.instantiateViewController(withIdentifier: identifier) as! VKPhotoDetailViewController
+        
+        photoDetailVC.photo = self.photos[indexPath.item]
+        
+        self.navigationController?.pushViewController(photoDetailVC, animated: true)
+    }
+
+    
 
 }
